@@ -26,3 +26,6 @@ class Word(models.Model):
 
     def __str__(self):
         return self.content
+
+    class Meta:
+        ordering = ['id']
