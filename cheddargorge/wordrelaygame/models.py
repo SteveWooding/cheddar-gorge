@@ -19,7 +19,8 @@ class Word(models.Model):
     A word object forms part of a story and belongs to a certain user.
     """
     content = models.CharField(max_length=64)
-    story = models.ForeignKey(Story, on_delete=models.CASCADE)
+    story = models.ForeignKey(Story, on_delete=models.CASCADE,
+                              related_name='words')
     author = models.ForeignKey('auth.User', on_delete=models.SET_NULL,
                                blank=True, null=True)
 
