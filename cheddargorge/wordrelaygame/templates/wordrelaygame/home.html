@@ -1,0 +1,11 @@
+
+
+<h2>Current Story</h2>
+{% if latest_story %}
+  {{ latest_story.date_created }}
+  <p>
+  {% for word in latest_story.words.all %}
+    {{ word }}
+  {% endfor %}
+  </p>
+{% endif %}
