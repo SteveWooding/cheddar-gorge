@@ -13,8 +13,7 @@
 {% if user.is_authenticated %}
   <form action="{% url 'wordrelaygame:addword' %}" method="post">
     {% csrf_token %}
-    <label for="newword">Enter the next word...</label>
-    <input type="text" id="newword">
+    {{ form }}
     <button type="submit" class="btn btn-default">Add Word</button>
   </form>
 {% else %}
