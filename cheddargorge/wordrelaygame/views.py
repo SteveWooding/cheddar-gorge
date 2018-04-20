@@ -1,6 +1,8 @@
-"""Views for the wordrelayapp."""
+"""Views for the wordrelaygame app."""
+from django.shortcuts import redirect, render
 from django.views.generic import View, DetailView
 
+from .forms import WordForm
 from .models import Story
 
 class HomeView(DetailView):
@@ -21,6 +23,11 @@ class HomeView(DetailView):
         else:
             return latest_story
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = WordForm()
+        return context
+
 
 class AddWordView(View):
     """Add a word to the latest story."""
@@ -28,4 +35,17 @@ class AddWordView(View):
 
     def post(self, request):
         """Handles the POST request to add a word to the latest story."""
-        pass
+        try:
+            latest_story = Story.objects.latest('date_created')
+        except Story.DoesNotExist:
+            return redirect('wordrelaygame:home') # TODO Display message to create a story first
+
+        form = WordForm(request.POST)
+        if form.is_valid():
+            word = form.save(commit=False)
+            word.story = latest_story
+            word.author = self.request.user
+            word.save()
+            return redirect('wordrelaygame:home')
+
+        return render(request, 'wordrelaygame/home.html', {'form': form})
