@@ -1,5 +1,5 @@
 """Views for the wordrelayapp."""
-from django.views.generic import DetailView
+from django.views.generic import View, DetailView
 
 from .models import Story
 
@@ -20,3 +20,12 @@ class HomeView(DetailView):
             return None
         else:
             return latest_story
+
+
+class AddWordView(View):
+    """Add a word to the latest story."""
+    http_method_names = ['post']
+
+    def post(self, request):
+        """Handles the POST request to add a word to the latest story."""
+        pass
