@@ -1,4 +1,5 @@
-
+{% extends "base.html" %}
+{% block wordrelaygame %}
 
 <h2>Current Story</h2>
 {% if latest_story %}
@@ -21,3 +22,5 @@
   <button type="button" class="btn btn-default">Login</button>
   <button type="button" class="btn btn-default">Register</button>
 {% endif %}
+
+{% endblock wordrelaygame %}
