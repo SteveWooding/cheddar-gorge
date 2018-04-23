@@ -39,7 +39,8 @@ class AddWordView(View):
         try:
             latest_story = Story.objects.latest('date_created')
         except Story.DoesNotExist:
-            return redirect('wordrelaygame:home') # TODO Display message to create a story first
+            messages.error(request, 'You need to create a story to add a word.')
+            return redirect('wordrelaygame:home')
 
         # Check the author of the previous word is different to the current
         # logged in user.
