@@ -1,4 +1,5 @@
 """Views for the wordrelaygame app."""
+from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.views.generic import View, DetailView
 
@@ -49,7 +50,8 @@ class AddWordView(View):
             latest_word_auth_id = None
 
         if latest_word_auth_id == self.request.user.id:
-            # TODO Error message about same author adding two consecutive words
+            messages.error(request, 'You added the last word. ' +
+                           'Someone else needs to add a word next.')
             return redirect('wordrelaygame:home')
 
         # If the form is valid, save the new word
