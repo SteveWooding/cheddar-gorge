@@ -26,8 +26,30 @@ class HomeView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = WordForm()
+
+        # Only pass the form to the context if the current user is different
+        # to the user that wrote the last word of the story.
+        try:
+            latest_word_auth_id = (self.object.words.order_by('-id')[0].
+                                   author.id)
+        except IndexError:
+            latest_word_auth_id = None
+
+        if(kwargs.get('current_user_id') != latest_word_auth_id or
+           latest_word_auth_id is None):
+            context['form'] = WordForm()
         return context
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if request.user:
+            current_user_id = request.user.id
+        else:
+            current_user_id = None
+        context = self.get_context_data(object=self.object,
+                                        current_user_id=current_user_id)
+        return self.render_to_response(context)
+
 
 
 class AddWordView(View):
