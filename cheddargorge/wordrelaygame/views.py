@@ -40,6 +40,19 @@ class AddWordView(View):
         except Story.DoesNotExist:
             return redirect('wordrelaygame:home') # TODO Display message to create a story first
 
+        # Check the author of the previous word is different to the current
+        # logged in user.
+        try:
+            latest_word_auth_id = (latest_story.words.order_by('-id')[0].
+                                   author.id)
+        except IndexError:
+            latest_word_auth_id = None
+
+        if latest_word_auth_id == self.request.user.id:
+            # TODO Error message about same author adding two consecutive words
+            return redirect('wordrelaygame:home')
+
+        # If the form is valid, save the new word
         form = WordForm(request.POST)
         if form.is_valid():
             word = form.save(commit=False)
