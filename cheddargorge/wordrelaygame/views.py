@@ -42,7 +42,7 @@ class HomeView(DetailView):
         return context
 
     def get(self, request, *args, **kwargs):
-        self.object = self.get_object()
+        self.object = self.get_object()  # pylint: disable=locally-disabled, W0201
         if request.user.is_authenticated:
             current_user_id = request.user.id
         else:
