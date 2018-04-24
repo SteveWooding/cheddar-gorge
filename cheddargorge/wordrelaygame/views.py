@@ -1,5 +1,6 @@
 """Views for the wordrelaygame app."""
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.views.generic import View, DetailView
 
@@ -42,7 +43,7 @@ class HomeView(DetailView):
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
-        if request.user:
+        if request.user.is_authenticated:
             current_user_id = request.user.id
         else:
             current_user_id = None
@@ -52,7 +53,7 @@ class HomeView(DetailView):
 
 
 
-class AddWordView(View):
+class AddWordView(LoginRequiredMixin, View):
     """Add a word to the latest story."""
     http_method_names = ['post']
 
