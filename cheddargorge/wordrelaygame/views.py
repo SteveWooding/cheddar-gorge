@@ -87,4 +87,5 @@ class AddWordView(LoginRequiredMixin, View):
             word.save()
             return redirect('wordrelaygame:home')
 
-        return render(request, 'wordrelaygame/home.html', {'form': form})
+        return render(request, 'wordrelaygame/home.html',
+                      {'form': form, 'latest_story': latest_story})
