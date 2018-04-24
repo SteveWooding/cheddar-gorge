@@ -4,7 +4,7 @@ from django.core.validators import RegexValidator
 
 from .models import Word
 
-VALID_WORD_REGEX = r'^[A-Za-z]+\.?,?$'
+VALID_WORD_REGEX = r'^[A-Za-z\']+\.?,?$'
 
 class WordForm(forms.ModelForm):
     """Form for added a new word to a story."""
@@ -18,6 +18,7 @@ class WordForm(forms.ModelForm):
         model = Word
         fields = ['content',]
         labels = {'content': 'Next word?'}
-        help_texts = {'content': ('Enter a single word only. ' +
-                                  'You can add a fullstop or comma.')}
+        help_texts = {'content': ('Enter a single word only (apostrophes ' +
+                                  'are allowed). You can add a fullstop ' +
+                                  'or comma.')}
         widgets = {'content': forms.TextInput(attrs={'pattern': VALID_WORD_REGEX})}
