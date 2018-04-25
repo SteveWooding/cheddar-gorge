@@ -7,6 +7,12 @@
   <title>Cheddar Gorge - The Website</title>
 </head>
 <body>
+
+  {% if user.is_authenticated %}
+    Logged in as {{ user.username }}
+    <a href="{% url 'logout' %}">Logout</a>
+  {% endif %}
+
   {% if messages %}
   <ul class="messages">
     {% for message in messages %}
