@@ -27,7 +27,7 @@
 {% else %}
   <p>Add a word to the story?</p>
   <a class="btn btn-default" href="{% url 'login' %}">Login</a>
-  <button type="button" class="btn btn-default">Register</button>
+  <a class="btn btn-default" href="{% url 'signup' %}">Sign-up</a>
 {% endif %}
 
 {% endblock content %}
