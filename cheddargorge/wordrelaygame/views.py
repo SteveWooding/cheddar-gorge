@@ -33,7 +33,7 @@ class HomeView(DetailView):
         try:
             latest_word_auth_id = (self.object.words.order_by('-id')[0].
                                    author.id)
-        except IndexError:
+        except (AttributeError, IndexError):
             latest_word_auth_id = None
 
         if(kwargs.get('current_user_id') != latest_word_auth_id or
