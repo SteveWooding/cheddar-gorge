@@ -9,25 +9,30 @@
     {{ word }}
   {% endfor %}
   </p>
-{% endif %}
 
-{% if user.is_authenticated %}
-  {% if form %}
-    <form action="{% url 'wordrelaygame:addword' %}" method="post">
-      {% csrf_token %}
-      {{ form }}
-      <button type="submit" class="btn btn-default">Add Word</button>
-    </form>
+  {% if user.is_authenticated %}
+    {% if form %}
+      <form action="{% url 'wordrelaygame:addword' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-default">Add Word</button>
+      </form>
+    {% else %}
+      <p>Now someone else needs to add the next word. Share on social media
+        to let other people know about the game.
+      </p>
+    {% endif %}
+
   {% else %}
-    <p>Now someone else needs to add the next word. Share on social media
-       to let other people know about the game.
-    </p>
+    <p>Add a word to the story?</p>
+    <a class="btn btn-default" href="{% url 'login' %}">Login</a>
+    <a class="btn btn-default" href="{% url 'signup' %}">Sign-up</a>
   {% endif %}
 
 {% else %}
-  <p>Add a word to the story?</p>
-  <a class="btn btn-default" href="{% url 'login' %}">Login</a>
-  <a class="btn btn-default" href="{% url 'signup' %}">Sign-up</a>
-{% endif %}
 
+  <p>No stories found. Login to create one.</p>
+
+
+{% endif %}
 {% endblock content %}
