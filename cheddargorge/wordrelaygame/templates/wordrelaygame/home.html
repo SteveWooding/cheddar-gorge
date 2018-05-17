@@ -17,6 +17,11 @@
         {{ form }}
         <button type="submit" class="btn btn-default">Add Word</button>
       </form>
+
+      {% if latest_story.words.all.count > 64 %}
+        {% include "wordrelaygame/_new_story_form.html" %}
+      {% endif %}
+
     {% else %}
       <p>Now someone else needs to add the next word. Share on social media
         to let other people know about the game.
@@ -31,7 +36,17 @@
 
 {% else %}
 
-  <p>No stories found. Login to create one.</p>
+  <p>No stories found.</p>
+
+  {% if user.is_authenticated %}
+
+    {% include "wordrelaygame/_new_story_form.html" %}
+
+  {% else %}
+
+    <p>Login to create one.</p>
+
+  {% endif %}
 
 
 {% endif %}

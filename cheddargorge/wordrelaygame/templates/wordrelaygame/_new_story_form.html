@@ -1,0 +1,4 @@
+<form action="{% url 'wordrelaygame:new_story' %}" method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-default">New Story</button>
+</form>
