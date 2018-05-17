@@ -9,6 +9,8 @@ class Story(models.Model):
     """
     date_created = models.DateTimeField(default=timezone.now)
 
+    ordering = ['-date_created']
+
     def __str__(self):
         return 'Story #' + str(self.id)
 
