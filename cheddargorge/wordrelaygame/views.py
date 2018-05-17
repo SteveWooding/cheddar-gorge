@@ -2,7 +2,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
-from django.views.generic import View, DetailView
+from django.views.generic import View, DetailView, ListView
 
 from .forms import WordForm
 from .models import Story
@@ -51,6 +51,15 @@ class HomeView(DetailView):
                                         current_user_id=current_user_id)
         return self.render_to_response(context)
 
+
+class StoryListView(ListView):
+    """Show an archive of past stories."""
+    model = Story
+    paginate_by = 2
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.order_by('-date_created')
 
 
 class AddWordView(LoginRequiredMixin, View):
