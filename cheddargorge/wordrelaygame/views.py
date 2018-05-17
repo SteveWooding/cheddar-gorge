@@ -89,3 +89,40 @@ class AddWordView(LoginRequiredMixin, View):
 
         return render(request, 'wordrelaygame/home.html',
                       {'form': form, 'latest_story': latest_story})
+
+
+class AddStoryView(LoginRequiredMixin, View):
+    """Create a new story.
+
+    Only allow the creation of a new story if there are no stories or if the
+    latest stories contains at least 64 words.
+    """
+    http_method_names = ['post']
+
+    def post(self, request):
+        """Handles the POST request to add a new story."""
+        add_story_allowed = False
+
+        try:
+            latest_story = Story.objects.latest('date_created')
+        except Story.DoesNotExist:
+            add_story_allowed = True
+        else:
+            if latest_story.words.count() > 64:
+                add_story_allowed = True
+
+        if add_story_allowed:
+            new_story = Story()
+            new_story.save()
+            messages.info(
+                request,
+                'A new story has been created. Now add the first word.'
+            )
+        else:
+            messages.error(
+                request,
+                ('Failed to create new story. Add more '
+                 'words to the current story instead.')
+            )
+
+        return redirect('wordrelaygame:home')
