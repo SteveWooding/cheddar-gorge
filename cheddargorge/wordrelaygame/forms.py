@@ -6,7 +6,7 @@ from django.core.validators import RegexValidator
 from .models import Word
 from .bannedwords import banned_word_list
 
-VALID_WORD_REGEX = r'^[A-Za-z\']+\.?,?$'
+VALID_WORD_REGEX = r"^[A-Za-z']+\.?,?$"
 
 
 def validate_not_banned_word(value):
