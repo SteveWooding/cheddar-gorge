@@ -6,7 +6,7 @@ from django.core.validators import RegexValidator
 from .models import Word
 from .bannedwords import banned_word_list
 
-VALID_WORD_REGEX = r"^[A-Za-z']+\.?,?$"
+VALID_WORD_REGEX = r"^[A-Za-z']+\.?,?\??$"
 
 
 def validate_not_banned_word(value):
@@ -30,9 +30,9 @@ class WordForm(forms.ModelForm):
         model = Word
         fields = ['content',]
         labels = {'content': 'Next word?'}
-        help_texts = {'content': ('Enter a single word only (apostrophes ' +
-                                  'are allowed). You can add a fullstop ' +
-                                  'or comma.')}
+        help_texts = {'content': ('Enter a single word only (apostrophes are '
+                                  'allowed). You can add a fullstop, comma '
+                                  'or question mark at the end.')}
         widgets = {
             'content': forms.TextInput(attrs={'pattern': VALID_WORD_REGEX})
             }
