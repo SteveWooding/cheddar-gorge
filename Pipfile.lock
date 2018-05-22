@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c7b4aabbe16dd0656fafa18c542bf9d153742798b82958d56db9fa610c3feb8c"
+            "sha256": "928a84f2cc0bc8ce9344e76a061c66080917ba58ffc7d5fe93ed2998f3034a9e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -78,11 +78,18 @@
         },
         "django": {
             "hashes": [
-                "sha256:2d8b9eed8815f172a8e898678ae4289a5e9176bc08295676eff4228dd638ea61",
-                "sha256:d81a1652963c81488e709729a80b510394050e312f386037f26b54912a3a10d0"
+                "sha256:26b34f4417aa38d895b6b5307177b51bc3f4d53179d8696a5c19dcb50582523c",
+                "sha256:71d1a584bb4ad2b4f933d07d02c716755c1394feaac1ce61ce37843ac5401092"
             ],
             "index": "pypi",
-            "version": "==2.0.4"
+            "version": "==2.0.5"
+        },
+        "django-bootstrap4": {
+            "hashes": [
+                "sha256:6db4a27b33851833e68b96344f9df063150dcace8d4787ebfc21eceb55196945"
+            ],
+            "index": "pypi",
+            "version": "==0.0.6"
         },
         "psycopg2-binary": {
             "hashes": [
@@ -141,10 +148,10 @@
     "develop": {
         "astroid": {
             "hashes": [
-                "sha256:35cfae47aac19c7b407b7095410e895e836f2285ccf1220336afba744cc4c5f2",
-                "sha256:38186e481b65877fd8b1f9acc33e922109e983eb7b6e487bd4c71002134ad331"
+                "sha256:032f6e09161e96f417ea7fad46d3fac7a9019c775f202182c22df0e4f714cb1c",
+                "sha256:dea42ae6e0b789b543f728ddae7ddb6740ba33a49fb52c4a4d9cb7bb4aa6ec09"
             ],
-            "version": "==1.6.3"
+            "version": "==1.6.4"
         },
         "isort": {
             "hashes": [
@@ -197,11 +204,11 @@
         },
         "pylint": {
             "hashes": [
-                "sha256:0b7e6b5d9f1d4e0b554b5d948f14ed7969e8cdf9a0120853e6e5af60813b18ab",
-                "sha256:34738a82ab33cbd3bb6cd4cef823dbcabdd2b6b48a4e3a3054a2bbbf0c712be9"
+                "sha256:aa519865f8890a5905fa34924fed0f3bfc7d84fc9f9142c16dac52ffecd25a39",
+                "sha256:c353d8225195b37cc3aef18248b8f3fe94c5a6a95affaf885ae21a24ca31d8eb"
             ],
             "index": "pypi",
-            "version": "==1.8.4"
+            "version": "==1.9.1"
         },
         "pylint-django": {
             "hashes": [
