@@ -1,21 +1,34 @@
 {% extends "base.html" %}
+{% load bootstrap4 %}
+
 {% block content %}
 
-<h2>Current Story</h2>
 {% if latest_story %}
-  {{ latest_story.date_created }}
-  <p>
-  {% for word in latest_story.words.all %}
-    {{ word }}
-  {% endfor %}
-  </p>
+<h2 class="text-center">Current Story</h2>
+<div class="card mx-auto story">
+  <div class="card-body">
+    <h3 class="card-title">
+    {% for word in latest_story.words.all %}
+      {{ word }}
+    {% endfor %}
+    </h3>
+  </div>
+  <div class="card-footer text-white">Started {{ latest_story.date_created }}</div>
+</div>
+
+
+<div></div>
+
+
 
   {% if user.is_authenticated %}
     {% if form %}
-      <form action="{% url 'wordrelaygame:addword' %}" method="post">
+      <form class="text-center mx-auto new-word-form" action="{% url 'wordrelaygame:addword' %}" method="post">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="btn btn-default">Add Word</button>
+        {% bootstrap_form form %}
+        {% buttons %}
+        <button type="submit" class="btn btn-primary">Add Word</button>
+        {% endbuttons %}
       </form>
 
       {% if latest_story.words.all.count > 64 %}
@@ -23,9 +36,8 @@
       {% endif %}
 
     {% else %}
-      <p>Now someone else needs to add the next word. Share on social media
-        to let other people know about the game.
-      </p>
+      <h4 class="text-center">Now someone else needs to add the next word.</h4>
+      <h4 class="text-center">Share on social media to let other people know about the game.</h4>
     {% endif %}
 
   {% else %}

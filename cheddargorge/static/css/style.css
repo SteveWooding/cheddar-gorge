@@ -1,0 +1,25 @@
+body {
+  background-color: #FFD464;
+  color: #1352A2;
+}
+
+.bg-info {
+  background-color: #1352A2;
+}
+
+.story {
+  width: 60%;
+  margin-bottom: 3rem;
+}
+
+.story > .card-body {
+  background-color: #FFE9B0;
+}
+
+.story > .card-footer {
+  background-color: #7F7558;
+}
+
+.new-word-form {
+  width: 40%;
+}
