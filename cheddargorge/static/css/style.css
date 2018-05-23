@@ -44,3 +44,7 @@ a:hover {
 .btn {
   margin: 1rem;
 }
+
+.sign-in-form {
+  width: 40%;
+}
