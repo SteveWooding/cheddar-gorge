@@ -37,9 +37,11 @@
     {% endif %}
 
   {% else %}
-    <p>Add a word to the story?</p>
-    <a class="btn btn-default" href="{% url 'login' %}">Login</a>
-    <a class="btn btn-default" href="{% url 'signup' %}">Sign-up</a>
+    <h4 class="text-center">Want to add the next word to the story?</h4>
+    <div class="text-center">
+      <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+      <a class="btn btn-secondary" href="{% url 'signup' %}">Sign-up</a>
+    </div>
   {% endif %}
 
   <div class="text-center archive-btn">

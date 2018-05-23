@@ -40,3 +40,7 @@ a:hover {
 .pagination {
   justify-content: center;
 }
+
+.btn {
+  margin: 1rem;
+}
