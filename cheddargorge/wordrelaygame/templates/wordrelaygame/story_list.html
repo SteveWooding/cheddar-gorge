@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Past Stories</h1>
+<h1 class="text-center">Past Stories</h1>
 {% for story in object_list %}
-  <div>
-    <p>{{ story.date_created }}</p>
-    <p>
-      {% for word in story.words.all %}
-        {{ word }}
-      {% endfor %}
-    </p>
-    <hr/>
+  <div class="card mx-auto story">
+      <div class="card-body">
+        <h3 class="card-title">
+        {% for word in story.words.all %}
+          {{ word }}
+        {% endfor %}
+        </h3>
+      </div>
+      <div class="card-footer text-white">
+        Started {{ story.date_created }}
+      </div>
   </div>
 {% empty %}
-  <p>No stories yet.</p>
+  <h2>No stories yet. :-(</h2>
 {% endfor %}
 
 
