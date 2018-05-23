@@ -55,7 +55,7 @@ class HomeView(DetailView):
 class StoryListView(ListView):
     """Show an archive of past stories."""
     model = Story
-    paginate_by = 2
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = super().get_queryset()
