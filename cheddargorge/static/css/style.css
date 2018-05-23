@@ -3,6 +3,15 @@ body {
   color: #1352A2;
 }
 
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:hover {
+  text-decoration: inherit;
+}
+
 .bg-info {
   background-color: #1352A2;
 }
