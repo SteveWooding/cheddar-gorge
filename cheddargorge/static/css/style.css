@@ -27,3 +27,7 @@ body {
 .archive-btn {
   margin-top: 3rem;
 }
+
+.pagination {
+  justify-content: center;
+}
