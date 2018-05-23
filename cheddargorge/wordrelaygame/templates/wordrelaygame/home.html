@@ -16,11 +16,6 @@
   <div class="card-footer text-white">Started {{ latest_story.date_created }}</div>
 </div>
 
-
-<div></div>
-
-
-
   {% if user.is_authenticated %}
     {% if form %}
       <form class="text-center mx-auto new-word-form" action="{% url 'wordrelaygame:addword' %}" method="post">
@@ -45,6 +40,11 @@
     <a class="btn btn-default" href="{% url 'login' %}">Login</a>
     <a class="btn btn-default" href="{% url 'signup' %}">Sign-up</a>
   {% endif %}
+
+  <div class="text-center archive-btn">
+    <a href="{% url 'wordrelaygame:story-list' %}" class="btn btn-secondary" role="button">Read Previous Stories</a>
+  </div>
+
 
 {% else %}
 
