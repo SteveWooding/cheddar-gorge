@@ -94,6 +94,7 @@ class AddWordView(LoginRequiredMixin, View):
             word.story = latest_story
             word.author = self.request.user
             word.save()
+            messages.success(request, 'Your word as been added. Thanks!')
             return redirect('wordrelaygame:home')
 
         return render(request, 'wordrelaygame/home.html',
