@@ -18,7 +18,8 @@
 
   {% if user.is_authenticated %}
     {% if form %}
-      <form class="text-center mx-auto new-word-form" action="{% url 'wordrelaygame:addword' %}" method="post">
+      <form class="text-center mx-auto new-word-form" action="{% url 'wordrelaygame:addword' %}"
+       method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
         {% buttons %}
@@ -42,7 +43,9 @@
   {% endif %}
 
   <div class="text-center archive-btn">
-    <a href="{% url 'wordrelaygame:story-list' %}" class="btn btn-secondary" role="button">Read Previous Stories</a>
+    <a href="{% url 'wordrelaygame:story-list' %}" class="btn btn-secondary" role="button">
+      Read Previous Stories
+    </a>
   </div>
 
 
