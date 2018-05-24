@@ -10,4 +10,38 @@
     <input type="submit" class="btn btn-primary" value="Sign Up">
   </form>
 </div>
+
+<hr>
+
+<p>Data Protection and Usage</p>
+<ul>
+  <li>
+    Your password will be securely stored, using the
+    <a href="https://en.wikipedia.org/wiki/Argon2">Argon2</a> hashing
+    algorithm, with a per user random salt.
+  </li>
+  <li>
+    If you supply an email address, it will ONLY be used is to send you
+    an email to recover your account if you forget your password.
+  </li>
+</ul>
+
+<p>Cookies</p>
+<ul>
+  <li>
+    If you don't login, no cookies are stored on your computer.
+  </li>
+  <li>
+    If you load the sign-up, login or new word form, a cookie called
+    <code>csrftoken</code> is stored on your computer. The purpose of this
+    cookie to prevent cross-site request forgery attacks. It consists of a
+    random string and links the request for the form with the data sent to the
+    server by the form.
+  </li>
+  <li>
+    If you login, a cookie called <code>sessionid</code> will be stored on your
+    computer. The purpose of this cookie is to maintain your logged in state as
+    you navigate around the website.
+  </li>
+</ul>
 {% endblock content %}
