@@ -24,7 +24,7 @@ urlpatterns = [
          name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'),
          name='logout'),
-    path('signup/', views.SignUp.as_view(), name='signup'),
+    path('signup/', views.SignUpView.as_view(), name='signup'),
     path('', include('wordrelaygame.urls')),
     path('admin/', admin.site.urls),
 ]
