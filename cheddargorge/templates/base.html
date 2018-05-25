@@ -12,10 +12,14 @@
 </head>
 <body>
   <div class="container-fluid">
-    <ul class="nav justify-content-end">
+    <ul class="nav nav-pills justify-content-end">
       {% if user.is_authenticated %}
-        <li class="nav-item">
-          <p class="nav-link">Hi {{ user.username }}</p>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+             aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
+          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
+            <a class="dropdown-item" href="{% url 'password_change' %}">Change password</a>
+          </div>
         </li>
       {% endif %}
       <li class="nav-item">

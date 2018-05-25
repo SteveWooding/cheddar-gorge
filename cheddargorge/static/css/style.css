@@ -48,3 +48,11 @@ a:hover {
 .sign-in-form {
   width: 40%;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: #1352A2;
+}
+
+.dropdown-item:hover {
+  background-color: #1352A2;
+}
