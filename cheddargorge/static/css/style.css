@@ -12,6 +12,10 @@ a:hover {
   text-decoration: inherit;
 }
 
+a.underline {
+  text-decoration: underline;
+}
+
 .bg-info {
   background-color: #1352A2;
 }
