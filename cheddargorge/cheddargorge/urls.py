@@ -66,6 +66,11 @@ urlpatterns = [
         name='password_change_done'
     ),
     path(
+        'delete_account/',
+        views.DeleteAccountView.as_view(),
+        name='delete_account'
+    ),
+    path(
         '',
         include('wordrelaygame.urls')
     ),

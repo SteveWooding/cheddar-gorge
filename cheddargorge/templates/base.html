@@ -19,6 +19,7 @@
              aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
             <a class="dropdown-item" href="{% url 'password_change' %}">Change password</a>
+            <a class="dropdown-item" href="{% url 'delete_account' %}">Delete account</a>
           </div>
         </li>
       {% endif %}
