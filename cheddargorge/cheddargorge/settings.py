@@ -65,6 +65,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # SECURITY WARNING: don't run with debug turned on in production!
+            'debug': True,
         },
     },
 ]
