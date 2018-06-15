@@ -12,6 +12,7 @@ django = {extras = ["argon2"]}
 pylint = "*"
 pylint-django = "*"
 coverage = "*"
+django-coverage-plugin = "*"
 
 [requires]
 python_version = "3.6"
