@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Story
+from .models import Story, Word
 
 # pylint: disable=locally-disabled, C0103
 
@@ -16,6 +16,57 @@ class HomeViewTests(TestCase):
         """
         response = self.client.get(reverse('wordrelaygame:home'))
         self.assertContains(response, '<a href="/login/">Login </a>')
+
+    def test_that_new_story_form_appears(self):
+        """
+        Test to ensure that the new story form appears if the current story has
+        greater that 64 words.
+        """
+        test_user = get_user_model().objects.create_user(username='testuser',
+                                                         password='12345')
+        self.client.login(username='testuser', password='12345')
+
+        test_story = Story()
+        test_story.save()
+
+        for _ in range(65):
+            new_word = Word(content='test', story=test_story, author=test_user)
+            new_word.save()
+
+        self.client.logout()
+
+        get_user_model().objects.create_user(username='testuser2',
+                                             password='12345')
+        self.client.login(username='testuser2', password='12345')
+
+        response = self.client.get(reverse('wordrelaygame:home'))
+        self.assertContains(
+            response,
+            ('<button type="submit" class="btn btn-secondary">'
+             'Start New Story</button>')
+            )
+
+    def test_invitation_to_add_word_to_story(self):
+        """Test to ensure the invitation is displayed to add a new word."""
+        test_user = get_user_model().objects.create_user(username='testuser',
+                                                         password='12345')
+        self.client.login(username='testuser', password='12345')
+
+        test_story = Story()
+        test_story.save()
+
+        new_word = Word(content='test', story=test_story, author=test_user)
+        new_word.save()
+
+        self.client.logout()
+
+        response = self.client.get(reverse('wordrelaygame:home'))
+        self.assertContains(
+            response,
+            ('<h4 class="text-center">Want to add the next word to the story?'
+             '</h4>')
+            )
+
 
 class AddWordViewTests(TestCase):
     """Tests for the AddWordView."""
@@ -191,6 +242,16 @@ class StoryListViewTests(TestCase):
         response = self.client.get(reverse('wordrelaygame:story-list'))
         self.assertContains(response, 'cricket', count=65)
         self.assertContains(response, 'tennis')
+
+    def test_view_with_no_stories(self):
+        """
+        Ensure the appropriate message is displayed if there are no stories.
+        """
+        response = self.client.get(reverse('wordrelaygame:story-list'))
+        self.assertContains(
+            response,
+            '<h2>No stories yet. :-(</h2>'
+            )
 
 
 class WordModelTests(TestCase):
