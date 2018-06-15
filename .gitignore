@@ -2,3 +2,4 @@
 .vscode/
 .directory
 sent_emails/
+.coverage
