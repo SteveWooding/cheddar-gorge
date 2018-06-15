@@ -4,4 +4,4 @@ Since these will tend to be swear words, they will not be checked
 into Git/GitHub.
 
 """
-banned_word_list = []
+banned_word_list = ['testbannedword']
