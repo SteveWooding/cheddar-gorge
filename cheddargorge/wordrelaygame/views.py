@@ -124,7 +124,7 @@ class AddStoryView(LoginRequiredMixin, View):
         if add_story_allowed:
             new_story = Story()
             new_story.save()
-            messages.info(
+            messages.success(
                 request,
                 'A new story has been created. Now add the first word.'
             )
