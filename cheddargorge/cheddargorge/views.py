@@ -38,6 +38,7 @@ class DeleteAccountView(LoginRequiredMixin, View):
         """Delete the user's account, log them out and display a message."""
         self.request.user.delete()
         logout(request)
-        messages.info(request, 'Your account has been successfully deleted.')
+        messages.success(request,
+                         'Your account has been successfully deleted.')
 
         return redirect('wordrelaygame:home')
