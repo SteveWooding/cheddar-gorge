@@ -1,3 +1,8 @@
 [run]
+omit =
+    ./manage.py
+    */apps.py
+    */wsgi.py
+
 plugins =
     django_coverage_plugin
