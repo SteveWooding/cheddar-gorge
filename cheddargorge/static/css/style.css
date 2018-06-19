@@ -53,6 +53,10 @@ a.underline {
   width: 40%;
 }
 
+.sign-up-form {
+  width: 50%;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   background-color: #1352A2;
 }

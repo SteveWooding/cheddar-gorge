@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container">
   <h1 class="text-center">Sign-up Form</h1>
-  <form method="post">
+  <form class="sign-up-form mx-auto" method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
     <input type="submit" class="btn btn-primary" value="Sign Up">
