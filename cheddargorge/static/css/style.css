@@ -64,3 +64,27 @@ a.underline {
 .dropdown-item:hover {
   background-color: #1352A2;
 }
+
+@media screen and (max-width: 425px) {
+
+  .story {
+    width: 85%;
+    margin-bottom: 3rem;
+  }
+
+  .new-word-form {
+    width: 80%;
+  }
+
+  .sign-in-form {
+    width: 60%;
+  }
+
+  .display-1 {
+    font-size: 2.5rem;
+  }
+
+  .sign-up-form {
+    width: 90%;
+  }
+}
