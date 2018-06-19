@@ -65,6 +65,11 @@ a.underline {
   background-color: #1352A2;
 }
 
+.about {
+  width: 85%;
+  margin-top: 2rem;
+}
+
 @media screen and (max-width: 425px) {
 
   .story {
