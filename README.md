@@ -10,13 +10,15 @@ but players still take it in turn to add words to the current story. No players 
 The goal of this version is to hopefully produce some amusing stories that are created by two or more people. After a
 story has at least 64 words, you can choose to start a new story.
 
-## Required Libraries and Dependencies
+## Required libraries and dependencies
 This project is written in Python and the Django web framework. It is setup to use the PostgreSQL database, though this
 could be swapped out for another database that Django supports. The major version numbers for the required software are:
 
-* Python 3.6
+* Python 3.6.5
 * Django 2.0.6
 * PostgreSQL 10.4
+
+You may be able to use previous versions of Python 3 and PostgreSQL. However, this project is strictly Django 2 and above.
 
 The project uses Pipenv to manage the required Python packages for production and development environments. Pipenv can be
 installed with `pip` like this:
@@ -50,7 +52,7 @@ The project follows a standard Djano file layout, as shown below:
 │   │   ├── forms.py                            # Contains user creation form
 │   │   ├── __init__.py
 │   │   ├── settings.py                         # Main Django settings file
-│   │   ├── tests.py
+│   │   ├── tests.py                            # Tests for user sign-up and deletion
 │   │   ├── urls.py                             # Main URL routes
 │   │   ├── views.py                            # Contains sign-up and account deletion views
 │   │   └── wsgi.py
@@ -59,7 +61,7 @@ The project follows a standard Djano file layout, as shown below:
 │   ├── static
 │   │   ├── css
 │   │   │   ├── bootstrap-sketchy.min.css       # Sketchy Bootstrap 4 theme
-│   │   │   └── style.css
+│   │   │   └── style.css                       # Custom CSS styles
 │   │   └── js
 │   │       ├── bootstrap.min.js
 │   │       ├── jquery-3.2.1.slim.min.js
@@ -77,22 +79,68 @@ The project follows a standard Djano file layout, as shown below:
 │   │       ├── password_reset_form.html
 │   │       └── signup.html
 │   └── wordrelaygame
-│       ├── admin.py
-│       ├── apps.py
+│       ├── admin.py                            # Admin settings for the Story and Word models
+│       ├── apps.py                             # Sets up the app name
 │       ├── bannedwords.py                      # List of words that are not accepted
-│       ├── forms.py
+│       ├── forms.py                            # New word form
 │       ├── __init__.py
-│       ├── migrations
-│       ├── models.py
+│       ├── migrations                          # Contains database migration scripts
+│       ├── models.py                           # Story and Word model definitions
 │       ├── templates
 │       │   └── wordrelaygame
-│       │       ├── home.html
-│       │       ├── _new_story_form.html
-│       │       └── story_list.html
-│       ├── tests.py
-│       ├── urls.py
-│       └── views.py
+│       │       ├── home.html                   # HTML template for main homepage
+│       │       ├── _new_story_form.html        # HTML fragment of new story form
+│       │       └── story_list.html             # HTML template for story archive page
+│       ├── tests.py                            # Tests for wordrelaygame app
+│       ├── urls.py                             # URL route definitions
+│       └── views.py                            # Views for homepage, adding a word, archive, etc.
 ├── LICENSE
-├── Pipfile
-└── Pipfile.lock
+├── Pipfile                                     # Main Pipenv configuration file
+└── Pipfile.lock                                # Pipenv conf file that specifies concrete package versions
 ```
+
+## Database setup
+By default, the project is set to use the PostgreSQL database, so this needs to be installed on your machine.
+
+Create a database with the following parameters:
+
+* Database name: cheddargorge
+* Database user: cheddargorge
+* Database user password: cheddargorge
+
+The `cheddargorge` database should be owned by the `cheddargorge` user. In order to run the tests, make sure the
+`cheddargorge` user has permission to create new databases, as a test database is created by the Django test suite.
+
+## How to run the project
+Download or clone the repository and navigate to the root of the project. Run the `pipenv` command, as discussed previously,
+to install the Python packages.
+
+Next, enter the Python virtual enviroment using the command:
+
+```
+pipenv shell
+```
+
+Then change to the `cheddargorge` directory and run the server:
+
+```
+cd cheddargorge
+python manage.py runserver
+```
+
+## How to run the test suite
+Use the following command to run the tests:
+
+```
+python manage.py test
+```
+
+To get a code coverage report, run the tests through the `coverage` command and generate a coverage report with:
+
+```
+coverage run --source='.' manage.py test
+coverage report -m
+```
+
+## How to contribute
+All pull requests and issue submissions are welcome and will be considered. Bug reports are especially welcome.
