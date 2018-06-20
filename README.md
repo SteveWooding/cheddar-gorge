@@ -5,23 +5,27 @@ An online version of Cheddar Gorge - a word relay game.
 This is a web-based version of the game
 [Cheddar Gorge](https://en.wikipedia.org/wiki/List_of_games_on_I%27m_Sorry_I_Haven%27t_a_Clue#Cheddar_Gorge)
 as played on the BBC Radio 4 programme
-[I'm Sorry I Haven't A Clue](https://en.wikipedia.org/wiki/I%27m_Sorry_I_Haven%27t_a_Clue). It does differ significantly,
-but players still take it in turn to add words to the current story. No players are eliminated, as in the original game.
-The goal of this version is to hopefully produce some amusing stories that are created by two or more people. After a
-story has at least 64 words, you can choose to start a new story.
+[I'm Sorry I Haven't A Clue](https://en.wikipedia.org/wiki/I%27m_Sorry_I_Haven%27t_a_Clue). It does
+differ significantly,
+but players still take it in turn to add words to the current story. No players are eliminated, as
+in the original game. The goal of this version is to hopefully produce some amusing stories that are
+created by two or more people. After a story has at least 64 words, you can choose to start a new
+story.
 
 ## Required libraries and dependencies
-This project is written in Python and the Django web framework. It is setup to use the PostgreSQL database, though this
-could be swapped out for another database that Django supports. The major version numbers for the required software are:
+This project is written in Python and the Django web framework. It is setup to use the PostgreSQL
+database, though this could be swapped out for another database that Django supports. The major
+version numbers for the required software are:
 
 * Python 3.6.5
 * Django 2.0.6
 * PostgreSQL 10.4
 
-You may be able to use previous versions of Python 3 and PostgreSQL. However, this project is strictly Django 2 and above.
+You may be able to use previous versions of Python 3 and PostgreSQL. However, this project is
+strictly Django 2 and above.
 
-The project uses Pipenv to manage the required Python packages for production and development environments. Pipenv can be
-installed with `pip` like this:
+The project uses Pipenv to manage the required Python packages for production and development
+environments. Pipenv can be installed with `pip` like this:
 
 ```
 pip install pipenv
@@ -33,7 +37,8 @@ To install the tested versions of the Python packages in a production environmen
 pipenv install --ignore-pipfile
 ```
 
-If you want to install the packages in a development environment and include the development packages, run the command:
+If you want to install the packages in a development environment and include the development
+packages, run the command:
 
 
 ```
@@ -44,7 +49,7 @@ Learn more about Pipenv in the article
 [Pipenv: A Guide to the New Python Packaging Tool](https://realpython.com/pipenv-guide/#pipenv-introduction).
 
 ## Project contents
-The project follows a standard Djano file layout, as shown below:
+The project follows a standard Django file layout, as shown below:
 
 ```
 ├── cheddargorge
@@ -55,7 +60,7 @@ The project follows a standard Djano file layout, as shown below:
 │   │   ├── tests.py                            # Tests for user sign-up and deletion
 │   │   ├── urls.py                             # Main URL routes
 │   │   ├── views.py                            # Contains sign-up and account deletion views
-│   │   └── wsgi.py
+│   │   └── wsgi.py                             # WSGI configuration file
 │   ├── manage.py                               # Main Django project management Python script
 │   ├── sent_emails                             # Directory for sent emails in development mode
 │   ├── static
@@ -72,8 +77,8 @@ The project follows a standard Djano file layout, as shown below:
 │   │       ├── delete.html                     # Account deletion confirmation page
 │   │       ├── login.html
 │   │       ├── password_change_done.html
-│   │       ├── password_change_form.html       
-│   │       ├── password_reset_complete.html    # Page shown after completing a password reset 
+│   │       ├── password_change_form.html
+│   │       ├── password_reset_complete.html    # Page shown after completing a password reset
 │   │       ├── password_reset_confirm.html
 │   │       ├── password_reset_done.html
 │   │       ├── password_reset_form.html
@@ -100,7 +105,8 @@ The project follows a standard Djano file layout, as shown below:
 ```
 
 ## Database setup
-By default, the project is set to use the PostgreSQL database, so this needs to be installed on your machine.
+By default, the project is set to use the PostgreSQL database, so this needs to be installed on your
+machine.
 
 Create a database with the following parameters:
 
@@ -108,14 +114,15 @@ Create a database with the following parameters:
 * Database user: cheddargorge
 * Database user password: cheddargorge
 
-The `cheddargorge` database should be owned by the `cheddargorge` user. In order to run the tests, make sure the
-`cheddargorge` user has permission to create new databases, as a test database is created by the Django test suite.
+The `cheddargorge` database should be owned by the `cheddargorge` user. In order to run the tests,
+make sure the `cheddargorge` user has permission to create new databases, as a test database is
+created by the Django test suite.
 
 ## How to run the project
-Download or clone the repository and navigate to the root of the project. Run the `pipenv` command, as discussed previously,
-to install the Python packages.
+Download or clone the repository and navigate to the root of the project. Run the `pipenv` command,
+as discussed previously, to install the Python packages.
 
-Next, enter the Python virtual enviroment using the command:
+Next, enter the Python virtual environment using the command:
 
 ```
 pipenv shell
@@ -135,7 +142,8 @@ Use the following command to run the tests:
 python manage.py test
 ```
 
-To get a code coverage report, run the tests through the `coverage` command and generate a coverage report with:
+To get a code coverage report, run the tests through the `coverage` command and generate a coverage
+report with:
 
 ```
 coverage run --source='.' manage.py test
@@ -143,4 +151,5 @@ coverage report -m
 ```
 
 ## How to contribute
-All pull requests and issue submissions are welcome and will be considered. Bug reports are especially welcome.
+All pull requests and issue submissions are welcome and will be considered. Bug reports are
+especially welcome.
