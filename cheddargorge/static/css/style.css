@@ -70,6 +70,14 @@ a.underline {
   margin-top: 2rem;
 }
 
+.social-media-icons {
+  margin-top: 2rem;
+}
+
+.social-media-icons > a {
+  margin: 0.5rem;
+}
+
 @media screen and (max-width: 425px) {
 
   .story {
