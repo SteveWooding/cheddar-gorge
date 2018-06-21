@@ -1,5 +1,6 @@
 # Cheddar Gorge
 [![Build Status](https://travis-ci.org/SteveWooding/cheddar-gorge.svg?branch=master)](https://travis-ci.org/SteveWooding/cheddar-gorge)
+[![Coverage Status](https://coveralls.io/repos/github/SteveWooding/cheddar-gorge/badge.svg?branch=master)](https://coveralls.io/github/SteveWooding/cheddar-gorge?branch=master)
 
 An online version of Cheddar Gorge - a word relay game.
 
