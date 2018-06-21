@@ -1,13 +1,24 @@
 language: python
+
 python:
   - "3.6"
+
 addons:
   postgresql: "9.6"
+
 install:
   - pip install pipenv
   - pipenv install --ignore-pipfile --deploy
+  - pip install django-coverage-plugin
+  - pip install coveralls
+
 before_script:
   - psql -c "create user cheddargorge with createdb password 'cheddargorge';" -U postgres
+
 script:
   - cd cheddargorge
-  - python manage.py test
+  - coverage run --source='.' manage.py test
+
+after_success:
+  - coverage report
+  - coveralls
