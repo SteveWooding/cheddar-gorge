@@ -6,9 +6,6 @@ addons:
 install:
   - pip install pipenv
   - pipenv install --ignore-pipfile --deploy
-before_script:
-  - psql -c "create user cheddargorge with createdb password 'cheddargorge';" -U postgres
-  - psql -c "create database cheddargorge owner cheddargorge;" -U postgres
 script:
   - cd cheddargorge
   - python manage.py test
