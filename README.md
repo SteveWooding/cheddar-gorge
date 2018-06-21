@@ -28,7 +28,7 @@ The project uses Pipenv to manage the required Python packages for production an
 environments. Pipenv can be installed with `pip` like this:
 
 ```
-pip install pipenv
+pip install --user pipenv
 ```
 
 To install the tested versions of the Python packages in a production environment, run the command:
