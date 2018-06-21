@@ -120,6 +120,15 @@ The `cheddargorge` database should be owned by the `cheddargorge` user. In order
 make sure the `cheddargorge` user has permission to create new databases, as a test database is
 created by the Django test suite.
 
+On Linux, the following commands would be run:
+
+```
+sudo -u postgres psql -c "create user cheddargorge with createdb password 'cheddargorge';"
+sudo -u postgres psql -c "create database cheddargorge owner cheddargorge;"
+```
+
+In a production deployment, remove the `createdb` option from the first command.
+
 ## How to run the project
 Download or clone the repository and navigate to the root of the project. Run the `pipenv` command,
 as discussed previously, to install the Python packages.
