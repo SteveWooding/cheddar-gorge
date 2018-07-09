@@ -3,3 +3,5 @@
 .directory
 sent_emails/
 .coverage
+.venv/
+*/static_root/
