@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
 
+from . import settings
 from . import views
 
 urlpatterns = [
@@ -79,3 +80,12 @@ urlpatterns = [
         admin.site.urls
     ),
 ]
+
+if settings.DEBUG:
+    from django.views.generic import TemplateView
+    from django.views.defaults import server_error
+    urlpatterns += [
+        path('403', TemplateView.as_view(template_name='403.html')),
+        path('404', TemplateView.as_view(template_name='404.html')),
+        path('500', server_error),
+    ]
